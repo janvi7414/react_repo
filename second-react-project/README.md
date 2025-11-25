@@ -14,3 +14,17 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+<!--    
+App jsx for javascript, index.css for   css     and index.html for html
+
+        components are just functions used to
+        create different sections in page
+
+        for this every time jsx and css file is created for each component inside src using rafce shortcut
+
+
+
+
+
+        -->

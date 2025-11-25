@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react' 
 import profile1 from '../assets/profile1.png'
 
 const userCard = () => {
   return (
-    <div>
+    <div className="user_div">
       <p id="user_name" >Janvi</p>
       <img id="user_img" src={profile1} alt="i" />
       <p id="user_desc">Description of the tile</p>
