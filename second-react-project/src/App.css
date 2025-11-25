@@ -1,0 +1,11 @@
+.AppDiv{
+    width:100vw;
+    height:100vh;
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap:2px;
+    color:white;
+}
