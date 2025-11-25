@@ -5,14 +5,14 @@ import profile1 from '../assets/profile1.png'
 const UserCard = () => {
   return (
     <div className="user_div">
-      <p id="user_name" >Janvi</p>
+      <p id="user_name" >{props.name}</p>
       <img id="user_img" src={profile1} alt="i" />
       <p id="user_desc">Description of the tile</p>
     </div>
   )
 }
 
-export default UserCard
+export default Card
 
 // here instead of class className is used
 /*
@@ -31,4 +31,7 @@ naming file name in src
   ✔ CamelCase reactCode (recommended for React components)
 naming component
   ✔ start with Caps letter
+
+
+props i.e. attribute :  data being transferend between files
 */
