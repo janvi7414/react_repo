@@ -9,7 +9,7 @@ function App() {
   
   return (
       <div className="AppDiv">
-        <UserCard name="Raj" desc="Hello this is Raj form IND" image={profile1}/>
+        <UserCard name="Raj" desc="Hello this is Raj form IND" image={profile1} style={{"border" : "solid yellow 5px"}}/>
         <UserCard name="Suraj" desc="Glad to see you here" image={profile2}/>
         <UserCard name="Shreya" desc="Bonjour commo ca va?" image={profile3}/>
 
