@@ -6,9 +6,9 @@ function App() {
   
   return (
       <div className="AppDiv">
-        <UserCard/>
-        <UserCard/>
-        <UserCard/>
+        <UserCard name="Name1" desc="desc1" />
+        <UserCard name="Name2" desc="desc2"/>
+        <UserCard name="Name3" desc="desc3"/>
 
       </div>
   )
