@@ -1,12 +1,11 @@
 import React from 'react'
 import "./UserCard.css"
-import profile1 from '../assets/profile1.png'
 
 const UserCard = (props) => {
   return (
     <div className="user_div">
       <p id="user_name" >{props.name}</p>
-      <img id="user_img" src={profile1} alt="i" />
+      <img id="user_img" src={props.image} alt="i" />
       <p id="user_desc">{props.desc}</p>
     </div>
   )
