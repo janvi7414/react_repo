@@ -1,0 +1,14 @@
+.container{
+    display:flex;
+    flex-direction:column;
+    border: solid black;
+    border-radius:0.5rem;
+    padding:1rem;
+    
+}
+.btn{
+    background-color: blue;
+    color:white;
+    padding:0.3rem;
+    
+}
