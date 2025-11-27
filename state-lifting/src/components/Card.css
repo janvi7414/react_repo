@@ -1,0 +1,12 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+body{
+    display:flex;
+    flex-direction:column;
+    justify-content: start;
+    align-items: start;
+    padding:2rem;
+    gap:1rem;
+}
