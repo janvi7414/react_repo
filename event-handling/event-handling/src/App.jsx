@@ -22,3 +22,11 @@ function mouseOver(){
 }
 
 export default App
+
+
+/*this is called IMMEDIATE INVOKE and it will give alret even before the
+button is pressed as this is incorrect way to add event
+
+<button onClick={alert("button clicked")}>
+  Click me
+<button/>*/
