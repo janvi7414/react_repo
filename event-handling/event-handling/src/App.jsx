@@ -29,4 +29,17 @@ button is pressed as this is incorrect way to add event
 
 <button onClick={alert("button clicked")}>
   Click me
-<button/>*/
+</button>*/
+
+
+/*this is called calling a function which is incorrect
+  <button onClick={handleClick()}>
+
+  </button> */
+
+  /*this is correct way called passing the function This tells React to remember it and only call your function when the user clicks the button.
+  
+  <button onClick={handleClick}>
+
+  </button>
+  */
