@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import Logger from './components/Logger'
 import Timer from './components/Timer'
+import DataFetcher from './components/DataFetcher'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -9,7 +10,7 @@ function App() {
   return (
       <div>
         {/* use every component one by one */}
-         
+        <DataFetcher/> 
     </div>
   )
 }
