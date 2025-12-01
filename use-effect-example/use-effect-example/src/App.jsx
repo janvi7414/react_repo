@@ -1,13 +1,15 @@
 import { useState } from 'react'
 import './App.css'
 import Logger from './components/Logger'
+import Timer from './components/Timer'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
       <div>
-       <Logger/>
+        {/* use every component one by one */}
+         
     </div>
   )
 }
@@ -15,6 +17,6 @@ function App() {
 export default App
 
 /*useState allows a component to:
-  Store a value
-  Update that value
-  Re-render when the value changes */
+    Store a value
+    Update that value
+    Re-render when the value changes */
