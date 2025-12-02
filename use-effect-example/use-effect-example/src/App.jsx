@@ -4,6 +4,7 @@ import Logger from './components/Logger'
 import Timer from './components/Timer'
 import DataFetcher from './components/DataFetcher'
 import Resize from './components/Resize'
+import MultiUseEffect from './components/MultiUseEffect'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -11,7 +12,6 @@ function App() {
   return (
       <div>
         {/* use every component one by one */}
-        <Resize/>
     </div>
   )
 }
