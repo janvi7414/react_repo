@@ -27,7 +27,8 @@ const Navbar = () => {
 }
 
 // we are using either <Link> or <NavLink>
-// <NavLink> provides the reference calles isActive to mark active link
+// <NavLink> provides the reference calles isActive to mark active link 
+// not using <a> as this refreshes the whole page every time which we don't want
 //here className is defined on the basis of a variable i.e. if the link is acive isAcive is true thus the className is provided else none
 
 export default Navbar

@@ -1,9 +1,17 @@
 body{
   display:flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
+
 }
 
 ul{
+ 
+  display:flex;
+  flex-direction:row;
+  gap:2rem;
+  justify-content: space-evenly;
+  background-color: beige;
   list-style: none;
+  
 }
