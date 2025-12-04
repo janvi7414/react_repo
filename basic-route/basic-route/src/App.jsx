@@ -71,3 +71,5 @@ export default App
     step 2: creating multiple routes
     step 3: provide context to the application using <RouterProvider></>
       */
+
+    /*Navigation is used to go to the next page without reloading website this is using useNavigate() */
