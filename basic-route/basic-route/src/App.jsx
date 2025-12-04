@@ -6,6 +6,10 @@ import Dashboard from './components/Dashboard';
 import About from './components/About';
 import Navbar from './components/Navbar';
 import ParamsComp from './components/ParamsComp';
+import Courses from './components/Courses'
+import Reports from './components/Reports'
+import MockTests from './components/MockTests'
+import RouteError from './components/RouteError';
 
 
 //created routes
@@ -33,7 +37,33 @@ const route = createBrowserRouter(
       <div>
         <Navbar/>
         <Dashboard/>
-      </div>
+      </div>,
+      //nested routes 
+      //use <Outlets> inside parent nav
+      children:[
+        //no / in path
+        {
+          path: 'courses',
+          element: 
+          <div>
+            <Courses/>
+          </div>
+        },
+        {
+          path: 'reports',
+          element: 
+          <div>
+            <Reports/>
+          </div>
+        },
+        {
+          path: 'mock-tests',
+          element: 
+          <div>
+            <MockTests/>
+          </div>
+        }
+      ]
     },
     {
       // here text after /students/" " is called params or it is the value of id var as per ParamsComp 
@@ -45,6 +75,11 @@ const route = createBrowserRouter(
         <Navbar/>
         <ParamsComp/>
       </div>
+    },
+    {
+      //this is to handle route other than above
+      path: "*",
+      element:<RouteError/>
     }
   ]
 );
