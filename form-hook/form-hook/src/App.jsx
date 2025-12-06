@@ -9,11 +9,14 @@ const {
   register,
   handleSubmit,
   watch,
-  formState: {errors},
+  formState: {errors, isSubmitting},
 
 } = useForm();
 
-function submitFunction(data){
+async function submitFunction(data){
+  await new Promise((resolve)=>
+    setTimeout(resolve,5000)
+  );
   console.log("form submitted..!", data);
 }
 
@@ -26,7 +29,11 @@ function submitFunction(data){
             {
               required: true,
               minLength: {value:3,message: "min len is 3"},
-              maxLength: {value:6,message: "max len is 6"}
+              maxLength: {value:6,message: "max len is 6"},
+              pattern: {
+                value: /^[A-Za-z]+$/i,
+                message: "invalid name"
+              }
             }
             )
           }/>
@@ -35,14 +42,22 @@ function submitFunction(data){
         </div>
         <div>
           <label htmlFor="middleName">Middle Name: </label>
-          <input id="middleName" {...register("middleName")}/>
+          <input id="middleName" {...register("middleName",
+            {
+              required: true,
+            }
+          )}/>
         </div>
         <div>
           <label htmlFor="lastNane">Last Name: </label>
-          <input id="lastName" {...register("lastName")}/>
+          <input id="lastName" {...register("lastName",
+            {
+              required: true,
+            })}/>
         </div>
-        <button>
-          submit
+        {/* button is disabled when isSubmitting is true */}
+        <button disabled={isSubmitting}>
+          {isSubmitting ? "submitting": "submit"}
         </button>
       </form>
     </div>
