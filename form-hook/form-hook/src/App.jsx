@@ -22,7 +22,16 @@ function submitFunction(data){
       <form onSubmit={handleSubmit(submitFunction)}>
         <div>
           <label htmlFor="first-Name">First Name: </label>
-          <input id="first-Name" {...register("firstName")}/>
+          <input  className = {errors.firstName? "inputErr" : ""} id="first-Name" {...register("firstName",
+            {
+              required: true,
+              minLength: {value:3,message: "min len is 3"},
+              maxLength: {value:6,message: "max len is 6"}
+            }
+            )
+          }/>
+          {/* when there is error in provided name  className to the input is given only when error occurs*/}
+          {errors.firstName && <h5 className='errorMsg'>{errors.firstName.message}</h5>}
         </div>
         <div>
           <label htmlFor="middleName">Middle Name: </label>
