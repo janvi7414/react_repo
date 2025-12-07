@@ -42,4 +42,21 @@ button is pressed as this is incorrect way to add event
   <button onClick={handleClick}>
 
   </button>
-  */
+
+
+
+  Props are read-only inputs passed from a parent component to a child component.
+
+Key characteristics:
+    Immutable (the child component cannot change them)
+    Used to configure or customize a component
+    Enable reusability because you can pass different props
+    Data flows one way: parent → child
+
+    State is data that a component manages internally and can change over time.
+
+Key characteristics:
+    Mutable (can change using setState or React Hooks)
+    When state changes, React re-renders the component
+    Used for dynamic data: forms, toggles, counters, API responses, etc.
+    */
