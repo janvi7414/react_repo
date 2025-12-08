@@ -1,9 +1,12 @@
 
 import { useDispatch, useSelector } from 'react-redux'
 import './App.css'
-import { decrement, increment, reset} from './features/counter/counterSlice';
+import { decrement, increment, reset, incrementByAmount} from './features/counter/counterSlice';
+import { useState } from 'react';
 
 function App() {
+
+  const [amount, setAmount] = useState(0);
 
   //fetching var from state
    const count = useSelector((state) => state.counter.value);
@@ -19,6 +22,9 @@ function App() {
   function handleRst(){
     dispatch(reset());
   }
+  function handleAmtInc(){
+    dispatch(incrementByAmount(amount));
+  }
 
   return (
    <div className='container'>
@@ -28,7 +34,19 @@ function App() {
     <br/>
     <br/>
     <button onClick={handleRst}>reset</button>
+    <br/>
+    <br/>
+    <input
+      placeholder='Enter amount'
+      type='Number'
+      value={amount}
+      onChange={(e) => setAmount(e.target.value)}
+      />
+    <br/>
+    <br/>
+    <button onClick={handleAmtInc}>Inc by Amt</button>
    </div>
+    
   )
 }
 
