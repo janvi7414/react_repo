@@ -1,11 +1,33 @@
 
+import { useDispatch, useSelector } from 'react-redux'
 import './App.css'
+import { decrement, increment, reset} from './features/counter/counterSlice';
 
 function App() {
 
-  return (
-   <div>
+  //fetching var from state
+   const count = useSelector((state) => state.counter.value);
+   //to dispatch
+   const dispatch = useDispatch();
 
+  function handleInc(){
+    dispatch(increment())
+  }
+  function handleDec(){
+    dispatch(decrement());
+  }
+  function handleRst(){
+    dispatch(reset());
+  }
+
+  return (
+   <div className='container'>
+    <button onClick={handleInc}>+</button>
+    <h2>Count: {count}</h2>
+    <button onClick={handleDec}>-</button>
+    <br/>
+    <br/>
+    <button onClick={handleRst}>reset</button>
    </div>
   )
 }
@@ -18,7 +40,7 @@ Think of Redux as a central data store where your app’s state lives.
 
 Terms:
   Action: it wraps event or event+payload it is mandatory to mention it's type
-  Reducer: func that takes initial state and an action
+  Reducer: func that takes current state and an action and gives next state
   Slice: 
   Dispatch: func to send actions, Dispatch triggers reducers → reducers update state → UI re-renders.
   Provider: makes store available to React
@@ -28,4 +50,9 @@ Terms:
 
   Steps of execution:
     onClick event is triggered-> handleClick() func is executed-> action is dispatched-> goes to the store-> reducer is called for increment-> updates count value in the store-> UI updated 
+
+    using terminal
+    "npm install @reduxjs/toolkit"
+
+    "npm install react-redux"
  */
