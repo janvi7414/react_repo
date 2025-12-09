@@ -57,6 +57,8 @@ when we are using React.memo() using freezing the handleClick func with dependen
 
 when we are using React.memo() using freezing the handleClick func with dependency list having "count" it will update to 1 only and the child component is rerendered when count is updated
 
+with freezing we are preventing rerendering of a func
+
 
 
  */
