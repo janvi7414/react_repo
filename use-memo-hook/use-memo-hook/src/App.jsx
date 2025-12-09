@@ -16,7 +16,8 @@ function App() {
     return num*2;
   }
 
-  let doubleValue = expensiveTask(inputValue);
+  let doubleValue = useMemo(() => expensiveTask(inputValue),[inputValue]);
+
 
   return (
     <div>
