@@ -24,6 +24,7 @@ const DataFetcher = () => {
         <h2>Loading..!</h2>
       ) : (
         <ul>
+          {/* here post is the parameter and arrow func is written in shortform as there is single parameter also return is not used */}
             {data.map(post => (
                 <li key={post.id}>{post.title}</li>
             ))}
