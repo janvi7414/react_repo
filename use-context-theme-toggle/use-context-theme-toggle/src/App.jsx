@@ -22,3 +22,8 @@ function App() {
 
 export default App
 export {themeContext}
+
+/*useContext is a React Hook that lets you access context values without needing to pass props down manually through multiple component levels.
+
+What is Context?
+Context is React’s way to share data across many components without prop drilling. */

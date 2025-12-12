@@ -32,5 +32,5 @@ naming component
   ✔ start with Caps letter
 
 
-props i.e. attribute :  data being transferend between files
+props i.e. properties :  data being transferend between files
 */

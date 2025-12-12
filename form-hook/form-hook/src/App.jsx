@@ -19,6 +19,7 @@ async function submitFunction(data){
   );
   console.log("form submitted..!", data);
 }
+//setTimeout let the func run after a delay
 
   return (
     <div>
