@@ -8,6 +8,7 @@ export const pasteSlice = createSlice({
   name: 'paste',
   initialState,
   reducers: {
+    // In Redux, a reducer is a pure function that decides how the state changes in response to an action.
     addToPastesArr: (state) => {
       
     },

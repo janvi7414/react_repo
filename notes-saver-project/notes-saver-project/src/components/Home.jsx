@@ -3,7 +3,11 @@ import React from 'react'
 const Home = () => {
   return (
     <div>
-      Home
+      <input 
+        placeholder='enter title'
+        value={text}
+        
+      />
     </div>
   )
 }
