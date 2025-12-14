@@ -4,7 +4,7 @@ import './Navbar.css'
 
 const Navbar = () => {
   return (
-    <div className='navDiv'>
+    <div className=' flex flex-row font-bold bg-amber-500 gap-4'>
       <NavLink to="/">
         Home
       </NavLink>

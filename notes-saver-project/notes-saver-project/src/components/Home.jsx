@@ -1,13 +1,13 @@
 import React from 'react'
+import { useState } from 'react';
 
 const Home = () => {
+
+  const [title, setTitle] = useState("");
+
   return (
     <div>
-      <input 
-        placeholder='enter title'
-        value={text}
-        
-      />
+      home
     </div>
   )
 }
