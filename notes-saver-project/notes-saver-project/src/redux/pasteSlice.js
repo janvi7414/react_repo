@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 
 const initialState = {
   pasteArr: localStorage.getItem("pastes") ? JSON.parse(localStorage.getItem("pastes")) : []
@@ -14,17 +14,44 @@ export const pasteSlice = createSlice({
       const paste = action.payload;
       state.pasteArr.push(paste);
       localStorage.setItem("pastes" , JSON.stringify(state.pasteArr));
-      toast("Paste Created Successfully");
+      toast("Paste Created Sucessfully");
 
     },
+
     updateToPastesArr: (state, action) => {
-      
-    },
-    resetPastesArr: (state, action) => {
-     
-    },
-    removeFromPasteArr: (state, action) => {
+      const paste = action.payload;
+      const index = state.pasteArr.findIndex((item) => item._id === paste._id);
 
+      if(index >=0){
+        //paste exits and can be updated
+        state.pasteArr[index] = paste;
+
+        localStorage.setItem("pastes", JSON.stringify(state.pasteArr));
+
+        toast.success("Paste Updated");
+      }
+    },
+
+    resetPastesArr: (state, action) => {
+     //set the arr to empty
+     state.pasteArr = [];
+
+     localStorage.removeItem("pastes");
+    },
+
+    removeFromPasteArr: (state, action) => {
+      const pasteId = action.payload;
+
+      console.log(pasteId);
+      const index = state.pasteArr.findIndex((item) => item._id === pasteId);
+
+      if(index >= 0){
+          state.pasteArr.splice(index, 1);
+        }
+
+        localStorage.setItem("pastes", JSON.stringify(state.pasteArr));
+
+      toast.success("Paste Deleted");
     }
   },
 })
