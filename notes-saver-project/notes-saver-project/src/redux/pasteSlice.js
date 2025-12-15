@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { toast } from 'react-toastify';
 
 const initialState = {
   pasteArr: localStorage.getItem("pastes") ? JSON.parse(localStorage.getItem("pastes")) : []
@@ -9,10 +10,14 @@ export const pasteSlice = createSlice({
   initialState,
   reducers: {
     // In Redux, a reducer is a pure function that decides how the state changes in response to an action.
-    addToPastesArr: (state) => {
-      
+    addToPastesArr: (state, action) => {
+      const paste = action.payload;
+      state.pasteArr.push(paste);
+      localStorage.setItem("pastes" , JSON.stringify(state.pasteArr));
+      toast("Paste Created Successfully");
+
     },
-    updateToPastesArr: (state) => {
+    updateToPastesArr: (state, action) => {
       
     },
     resetPastesArr: (state, action) => {
