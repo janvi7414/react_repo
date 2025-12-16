@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeFromPasteArr } from '../redux/pasteSlice';
+import { NavLink } from 'react-router-dom';
 
 const Paste = () => {
 
@@ -10,7 +11,7 @@ const Paste = () => {
 
   const dispatch = useDispatch();
 
-  const filteredData = pasteArr.filter((paste) => paste.title.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredData = pasteArr.filter((paste) => paste.title?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   function handleDelete(pasteId){
@@ -33,7 +34,7 @@ const Paste = () => {
             filteredData.length >0 && filteredData.map(
               (paste) =>{
                 return (
-                  <div className='border mt-8 p-2 rounded-b-sm bg-white m-2'>
+                  <div className='border mt-8 p-2 rounded-b-sm bg-white m-2'  key={paste?._id}>
                     <div>
                       {paste.title}
                     </div>
@@ -42,10 +43,14 @@ const Paste = () => {
                     </div>
                     <div className='buttonDiv flex flex-row justify-evenly m-4'>
                       <button className='pl-4 pr-4 focus:border-2 border '>
-                        Edit
+                        <NavLink to={`/?pasteId=${paste?._id}`}>
+                          Edit
+                        </NavLink>
                       </button>
                       <button className='pl-4 pr-4 focus:border-2 border '>
-                        View
+                        <NavLink to={`/pastes/${paste?._id}`}>
+                          View
+                        </NavLink>
                       </button>
                       <button className='pl-4 pr-4 focus:border-2 border ' onClick={() => handleDelete(paste?._id)}>
                         Delete
@@ -58,6 +63,11 @@ const Paste = () => {
                       </button>
 
                     </div>
+                    <div>
+                      <p className='text-sm'>
+                        Created on: {new Date(paste.createdAt).toLocaleString()}
+                      </p>
+                    </div>
                   </div>
                 )
                  
@@ -65,6 +75,7 @@ const Paste = () => {
             )
           }
       </div>
+  
     </div>
   )
 }

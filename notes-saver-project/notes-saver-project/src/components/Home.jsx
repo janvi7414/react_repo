@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import { addToPastesArr, updateToPastesArr } from '../redux/pasteSlice';
 
@@ -12,12 +12,33 @@ const Home = () => {
   const [content, setContent] = useState('');
   const dispatch = useDispatch();
 
+  const allPastes = useSelector((state) => state.paste.pasteArr);
+
+
+// for edit button
+  useEffect(() => {
+    if(pasteId){
+      const paste = allPastes.find((p) => p._id === pasteId);
+
+      if(paste){
+        //runs after redux loaded it
+        setTitle(paste.title);
+        setContent(paste.content);
+      }
+    }else{
+      setTitle('');
+      setContent('');
+    }
+
+    // runs sideeffect whent he pasteId changes
+  },[pasteId, allPastes])
+
   function btnFunc() {
     const paste = {
       title: title,
       content: content,
       // id = pasteId if pasted is updated i.e. id is present already and if new paste is created id is generated form the date
-      _id: pasteId || Date.now.toString(36),
+      _id: pasteId || Date.now().toString(36),
       createdAt: new Date().toISOString(),
     }
 

@@ -15,8 +15,8 @@ export const pasteSlice = createSlice({
     addToPastesArr: (state, action) => {
       const paste = action.payload;
 
-    //to check if title already exits
-      const titleIndex = state.pasteArr.findIndex((item) => normalize(item.title) === normalize(paste.title));
+    //to check if title already exits and when updated it should not think it as duplicate
+      const titleIndex = state.pasteArr.findIndex((item) => normalize(item.title) === normalize(paste.title)  && item._id !== paste._id);
 
       if(titleIndex >= 0){
         toast.error("Title already exists");
@@ -61,11 +61,11 @@ export const pasteSlice = createSlice({
 
       if(index >= 0){
           state.pasteArr.splice(index, 1);
-        }
 
-        localStorage.setItem("pastes", JSON.stringify(state.pasteArr));
+          localStorage.setItem("pastes", JSON.stringify(state.pasteArr));
 
-      toast.success("Paste Deleted");
+          toast.success("Paste Deleted");
+      }
     }
   },
 })
