@@ -5,6 +5,8 @@ const initialState = {
   pasteArr: localStorage.getItem("pastes") ? JSON.parse(localStorage.getItem("pastes")) : []
 }
 
+const normalize = (str) => (str ?? "") .trim().toLowerCase();
+
 export const pasteSlice = createSlice({
   name: 'paste',
   initialState,
@@ -12,15 +14,27 @@ export const pasteSlice = createSlice({
     // In Redux, a reducer is a pure function that decides how the state changes in response to an action.
     addToPastesArr: (state, action) => {
       const paste = action.payload;
+
+    //to check if title already exits
+      const titleIndex = state.pasteArr.findIndex((item) => normalize(item.title) === normalize(paste.title));
+
+      if(titleIndex >= 0){
+        toast.error("Title already exists");
+        return ;
+      }
+
       state.pasteArr.push(paste);
+
       localStorage.setItem("pastes" , JSON.stringify(state.pasteArr));
-      toast("Paste Created Sucessfully");
+      toast.success("Paste Created Sucessfully");
 
     },
 
     updateToPastesArr: (state, action) => {
       const paste = action.payload;
       const index = state.pasteArr.findIndex((item) => item._id === paste._id);
+
+      // index -1 not found >=0 found
 
       if(index >=0){
         //paste exits and can be updated
