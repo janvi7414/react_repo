@@ -3,6 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { removeFromPasteArr } from '../redux/pasteSlice';
 import { NavLink } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { IoEye } from "react-icons/io5";
+import { MdContentCopy } from 'react-icons/md';
+import { FaCopy, FaEdit } from 'react-icons/fa';
+import { MdDeleteForever } from 'react-icons/md';
+import { IoShareSocial } from 'react-icons/io5';
+import { Tooltip } from 'react-tooltip';
 
 const Paste = () => {
 
@@ -85,25 +91,32 @@ const Paste = () => {
                     <div>
                       {paste.content}
                     </div>
-                    <div className='buttonDiv flex flex-row justify-evenly m-4'>
-                      <button className='pl-4 pr-4 focus:border-2 border '>
-                        <NavLink to={`/?pasteId=${paste?._id}`}>
-                          Edit
+                    <div className='buttonDiv flex flex-row justify-end gap-4 m-4'>
+                      <button className='p-1 focus:border-2 border '>
+                        <NavLink to={`/?pasteId=${paste?._id}`} 
+                        data-tooltip-id ="paste-tooltip" data-tooltip-content={"Edit"}>
+                          <FaEdit/>
                         </NavLink>
                       </button>
-                      <button className='pl-4 pr-4 focus:border-2 border '>
-                        <NavLink to={`/pastes/${paste?._id}`}>
-                          View
+                      <button className='p-1 focus:border-2 border '>
+                        <NavLink to={`/pastes/${paste?._id}`} data-tooltip-content={"View"} data-tooltip-id='paste-tooltip'>
+                          <IoEye/>
                         </NavLink>
                       </button>
-                      <button className='pl-4 pr-4 focus:border-2 border ' onClick={() => handleDelete(paste?._id)}>
-                        Delete
+                      <button className='focus:border-2 border p-1 ' onClick={() => handleDelete(paste?._id)}>
+                        <NavLink data-tooltip-content={"Delete"} data-tooltip-id='paste-tooltip'>
+                          <MdDeleteForever/>
+                        </NavLink>
                       </button>
-                      <button className='pl-4 pr-4 focus:border-2 border ' onClick={() => handleCopy(paste.content)}>
-                        Copy
+                      <button className='p-1 focus:border-2 border ' onClick={() => handleCopy(paste.content)}>
+                        <NavLink data-tooltip-content={"Copy"} data-tooltip-id='paste-tooltip'>
+                          <FaCopy/>
+                        </NavLink>
                       </button>
-                      <button className='pl-4 pr-4 focus:border-2 border ' onClick={() => handleShare(paste)}>
-                        Share
+                      <button className='p-1  focus:border-2 border ' onClick={() => handleShare(paste)}>
+                        <NavLink  data-tooltip-content={"Share"} data-tooltip-id='paste-tooltip'>
+                          <IoShareSocial/>
+                        </NavLink>
                       </button>
 
                     </div>
@@ -119,6 +132,18 @@ const Paste = () => {
             )
           }
       </div>
+
+      <Tooltip
+        id='paste-tooltip'
+        place='top'
+        delayShow={100}
+        // 100 milisecond
+        delayHide={100}
+        style={{
+          backgroundColor: "#111"
+        }}
+
+      />
   
     </div>
   )
@@ -133,4 +158,11 @@ export default Paste
   
   paste?._id  ---> when paste is not confirmed exits i.e it might return null or undefined this means if paste exits take it's id
   paste._id  ---> when it is confirm that paste exits
+
+  "https://react-icons.github.io/react-icons/"
+  
+
+  <NavLink> gives pointer cursor 
+  react-tooltip provides the functionality to view text when hovered
+  data-tooltip-id should be equal to the id mentioned in the botton inside <Tooltip/>
   */
