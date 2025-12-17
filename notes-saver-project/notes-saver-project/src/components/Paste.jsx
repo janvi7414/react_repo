@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeFromPasteArr } from '../redux/pasteSlice';
 import { NavLink } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const Paste = () => {
 
@@ -16,6 +17,23 @@ const Paste = () => {
 
   function handleDelete(pasteId){
     dispatch(removeFromPasteArr(pasteId));
+  }
+
+  // use const for arrow func
+  const handleCopy = async (content) => {
+    //to handle error
+    try{
+      // await so that it returns a promise
+      await navigator.clipboard.writeText(content);
+      console.log("copied!");
+      toast.success("content copied!");
+
+    }catch(e){
+
+  // You don’t have to manually throw the error.
+  // await will automatically throw if the Promise is rejected — and catch will catch it.
+      console.log("error found: ", e);
+    }
   }
 
 
@@ -55,7 +73,7 @@ const Paste = () => {
                       <button className='pl-4 pr-4 focus:border-2 border ' onClick={() => handleDelete(paste?._id)}>
                         Delete
                       </button>
-                      <button className='pl-4 pr-4 focus:border-2 border '>
+                      <button className='pl-4 pr-4 focus:border-2 border ' onClick={() => handleCopy(paste.content)}>
                         Copy
                       </button>
                       <button className='pl-4 pr-4 focus:border-2 border '>
