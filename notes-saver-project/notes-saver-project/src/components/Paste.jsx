@@ -36,6 +36,32 @@ const Paste = () => {
     }
   }
 
+  const handleShare = async (paste) => {
+    const shareUrl = `${window.location.origin}/pastes/${paste._id}`;
+
+
+
+// paste is the current paste object (id, title, content, etc.)
+// window.location.origin → base URL of your app /pastes/${paste._id} → route to view that paste
+//  navigator.share is a feature supported by mobile and browser where options like whatsapp, email etc appears if(navigator.share) checks if it is supported by the browser if not then else block copies the link to clipboard
+// paste.content.slice(0,100) prevent huge text dumps 
+// catch block executes when user cancles sharing
+    if(navigator.share) {
+      try{
+        await navigator.share({
+          title: paste.title,
+          text: paste.content.slice(0,100),
+          url: shareUrl,
+        })
+      }catch(e){
+        console.log("Share cancelled");
+      }
+    }else{
+      await navigator.clipboard.writeText(shareUrl);
+      toast.success("Share link copied!");
+    }
+  };
+
 
   return (
     <div>
@@ -76,7 +102,7 @@ const Paste = () => {
                       <button className='pl-4 pr-4 focus:border-2 border ' onClick={() => handleCopy(paste.content)}>
                         Copy
                       </button>
-                      <button className='pl-4 pr-4 focus:border-2 border '>
+                      <button className='pl-4 pr-4 focus:border-2 border ' onClick={() => handleShare(paste)}>
                         Share
                       </button>
 
@@ -99,3 +125,12 @@ const Paste = () => {
 }
 
 export default Paste
+
+
+/*
+  onClick(handleClick()) ---> inCorrect
+  onClick(() => handleClick()) ---> correct
+  
+  paste?._id  ---> when paste is not confirmed exits i.e it might return null or undefined this means if paste exits take it's id
+  paste._id  ---> when it is confirm that paste exits
+  */
